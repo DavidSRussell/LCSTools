@@ -6,10 +6,10 @@ function [RunOpts, InitialState] = changeRunOptions(RunOpts, InitialState)
 
 %% Change integration options
 %
-% RunOpts.startTime = 3024000;
-RunOpts.timeSpan = 3024000 + [-300, 0];
-RunOpts.timeStep = 100;
-RunOpts.outputTimes = 3024000 - 300;
+% RunOpts.startTime =
+% RunOpts.timeSpan =
+% RunOpts.timeStep =
+% RunOpts.outputTimes =
 % RunOpts.integrationMethod =
 
 %% Change dataset-specific run options
@@ -24,16 +24,16 @@ RunOpts.outputTimes = 3024000 - 300;
 % RunOpts.InitialStateMetadata.xLimits =
 % RunOpts.InitialStateMetadata.yLimits =
 % RunOpts.InitialStateMetadata.zLimits =
-% RunOpts.InitialStateMetadata.dx = 5
-% RunOpts.InitialStateMetadata.dy = 5
-% RunOpts.InitialStateMetadata.dz = 0.01
+% RunOpts.InitialStateMetadata.dx =
+% RunOpts.InitialStateMetadata.dy =
+% RunOpts.InitialStateMetadata.dz =
 
 %% ...or set initial state directly if not a grid
 %
-% RunOpts.InitialState.x = 2*rand(10, 1);
-% RunOpts.InitialState.y = rand(10, 1);
+% RunOpts.InitialState.x =
+% RunOpts.InitialState.y =
 % RunOpts.InitialState.z =
-% RunOpts.InitialState.m = zeros(size(RunOpts.InitialState.x))
+% RunOpts.InitialState.m =
 
 %% Change system parameter values
 %
@@ -52,9 +52,9 @@ RunOpts.outputTimes = 3024000 - 300;
 % RunOpts.Parameters.d =
 %
 % Point vortices:
-% RunOpts.Parameters.gammas = [rand, rand, rand];
-% RunOpts.Parameters.xVortices = 6*[rand, rand, rand] - 3;
-% RunOpts.Parameters.yVortices = 6*[rand, rand, rand] - 3;
+% RunOpts.Parameters.gammas =
+% RunOpts.Parameters.xVortices =
+% RunOpts.Parameters.yVortices =
 %
 % Idealized stratospheric flow:
 % R_E = 6.371
