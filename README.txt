@@ -1,4 +1,4 @@
-LCSTools README (updated 2/1/2018)
+LCSTools README (updated 2/8/2018)
 
 By:
 David Russell
@@ -22,11 +22,11 @@ In LCSTools, a Lagrangian analysis is split into three steps: 1) compute tracer 
 a) Choose an ODE System or Dataset from the following options:
 
      2D ODE Systems:
-       'doubleGyre'      Double-gyre
-       'duffing'         Duffing oscillator
+       'doubleGyre'      Periodically-forced double gyre
+       'duffing'         Periodically-forced Duffing oscillator
        'linearSystem2D'  General 2D linear system
-       'pointVortices'   Point Vortex system (each vortex advects with the flow)
-       'stratosphere'    Idealized stratospheric flow (Bollt and Santitissadeekorn)
+       'pointVortices'   Point Vortex system (each vortex advects according to other vortices)
+       'stratosphere'    Idealized stratospheric flow (from Bollt and Santitissadeekorn)
 
      3D ODE Systems:
        'hillVortex'      Hill's Spherical Vortex
@@ -63,7 +63,7 @@ b) Run the function plotFields with the .mat file name put out by analyzeStates 
 
 A few additional visualization options exist outside this normal workflow. Like plotFields, these will also incorporate any options set in changePlotOptions.m:
 
-- Direct ``spaghetti’’ plots of trajectories can be produced by running plotTrajectories with the output file name from computeTrajectories as argument.
+- Direct "spaghetti" plots of trajectories can be produced by running plotTrajectories with the output file name from computeTrajectories as argument.
 
 - Trajectories can be animated by running animateTrajectories with the output file name from computeTrajectories as argument (to get smooth animations, make sure that ‘RunOpts.outputTimes’ contains each desired time).
 
