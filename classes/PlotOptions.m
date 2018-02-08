@@ -1,0 +1,26 @@
+classdef PlotOptions
+  properties
+    xLimits
+    yLimits
+    zLimits
+    xLabel
+    yLabel
+    zLabel
+    savePlots
+    plotM
+    plotFTLE
+    plotCoherentSets
+    plotScatter3D
+    plotSlices3D
+    plotWindowDimensions
+    dataAspectRatio3D
+    colorMap
+    colorAxisForM
+    colorAxisForFTLE
+    xSlices
+    ySlices
+    zSlices
+    viewAngle3D
+    frameRate
+  end
+end
