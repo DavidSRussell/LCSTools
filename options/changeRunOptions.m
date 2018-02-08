@@ -44,6 +44,7 @@ function [RunOpts, InitialState] = changeRunOptions(RunOpts, InitialState)
 %
 % Duffing:
 % RunOpts.Parameters.epsilon =
+% RunOpts.Parameters.omega =
 %
 % 2D Linear System:
 % RunOpts.Parameters.a =

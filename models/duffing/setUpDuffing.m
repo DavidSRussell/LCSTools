@@ -15,6 +15,7 @@ DuffingSys.isPeriodicInY = 0;
 
 % Set default system parameter values
 DuffingSys.DefaultRunOptions.Parameters.epsilon = 0.1;
+DuffingSys.DefaultRunOptions.Parameters.omega = 1;
 
 % Set default integration options
 DuffingSys.DefaultRunOptions.startTime = 0;
