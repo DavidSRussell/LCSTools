@@ -1,10 +1,12 @@
 function Lorenz3VarSys = setUpLorenz3Var
 % setUpLorenz3Var: Set up an ODESystem object for the Lorenz 1963
-% 3-variable system, with fields set to various default values.
+% 3-variable system, with fields set to various default values. Default
+% options are split into run options, analysis options, and plot options.
 
 Lorenz3VarSys = ODESystem;
 
-% Set essential features
+%% Set essential features %%
+
 Lorenz3VarSys.name = 'lorenz3Var';
 Lorenz3VarSys.longName = 'Lorenz 1963 Three-Variable System';
 Lorenz3VarSys.stateVectorDerivative = @lorenz3VarStateVectorDerivative;
@@ -13,6 +15,8 @@ Lorenz3VarSys.spatialDimension = 3;
 Lorenz3VarSys.isPeriodicInX = 0;
 Lorenz3VarSys.isPeriodicInY = 0;
 Lorenz3VarSys.isPeriodicInZ = 0;
+
+%% Set default run options %%
 
 % Set default parameter values
 Lorenz3VarSys.DefaultRunOptions.Parameters.sigma = 10;
@@ -29,14 +33,14 @@ Lorenz3VarSys.DefaultRunOptions.timeStep = 0.1;
 Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.xLimits = [-25, 25];
 Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.yLimits = [-25, 25];
 Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.zLimits = [0, 50];
-% Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.dx = 0.2;
-% Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.dy = 0.2;
-% Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.dz = 0.2;
 Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.dx = 1;
 Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.dy = 1;
 Lorenz3VarSys.DefaultRunOptions.InitialStateMetadata.dz = 1;
 
-% Set default plot options
+%% Set default analysis options %%
+
+%% Set default plot options %%
+
 Lorenz3VarSys.DefaultPlotOptions.xLimits = [-25, 25];
 Lorenz3VarSys.DefaultPlotOptions.yLimits = [-25, 25];
 Lorenz3VarSys.DefaultPlotOptions.zLimits = [0, 50];

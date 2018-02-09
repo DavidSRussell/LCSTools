@@ -1,8 +1,10 @@
 function ChesROMSDS = setUpChesROMS
 % setUpChesROMS: Set up the ChesROMS dataset for the computeTrajectories
-% function.
+% function. Default options are split into run options, analysis options,
+% and plot options.
 
-% Set essential dataset features
+%% Set essential dataset features %%
+
 ChesROMSDS = Dataset;
 ChesROMSDS.name = 'chesROMS';
 ChesROMSDS.longName = 'Chesapeake Bay ROMS';
@@ -25,6 +27,8 @@ for i = 1 : nFilesBwd
   fileNames{nFilesBwd + 1 - i} = ['chesroms_his_0', num2str(840 - i), '.nc'];
 end
 ChesROMSDS.fileNames = fileNames;
+
+%% Set default run options %%
 
 % Set default integration options
 ChesROMSDS.DefaultRunOptions.startTime = 3024000; % 'ocean_time' value
@@ -49,7 +53,13 @@ ChesROMSDS.DefaultRunOptions.InitialStateMetadata.dz = 0.025;
 ChesROMSDS.DefaultRunOptions.InitialStateMetadata.xLimits = [0, 149];
 ChesROMSDS.DefaultRunOptions.InitialStateMetadata.yLimits = [0, 479];
 ChesROMSDS.DefaultRunOptions.InitialStateMetadata.zLimits = [-1, 0];
-    
+
+%% Set default analysis options %%
+
+ChesROMSDS.DefaultAnalysisOptions.TransitionMatrixOptions.particleDimensionsPerGridBox = [5, 5, 5];
+
+%% Set default plot options %%
+
 % Set default grid-space plot options
 ChesROMSDS.DefaultGridSpacePlotOptions.xLimits = [0, 149];
 ChesROMSDS.DefaultGridSpacePlotOptions.yLimits = [0, 479];
@@ -59,9 +69,6 @@ ChesROMSDS.DefaultGridSpacePlotOptions.yLabel = '$\eta$';
 ChesROMSDS.DefaultGridSpacePlotOptions.zLabel = '$\sigma$';
 ChesROMSDS.DefaultGridSpacePlotOptions.plotWindowDimensions = [560, 420];
 ChesROMSDS.DefaultGridSpacePlotOptions.dataAspectRatio3D = [50, 50, 1];
-
-% Set default analysis options
-ChesROMSDS.DefaultAnalysisOptions.TransitionMatrixOptions.particleDimensionsPerGridBox = [5, 5, 5];
 
 % Set default physical-space plot options (longitude, latitude, depth in meters)
 ChesROMSDS.DefaultPhysicalSpacePlotOptions.xLimits = [-77.5, -74.5];

@@ -1,11 +1,13 @@
 function PointVorticesSys = setUpPointVortices
 % setUpPointVortices: Set up an ODESystem object for a system of
 % arbitrarily many point vortices, with fields (including vortex strengths
-% and positions) set to various default values.
+% and positions) set to various default values. Default options are split
+% into run options, analysis options, and plot options.
 
 PointVorticesSys = ODESystem;
 
-% Set essential features
+%% Set essential features %%
+
 PointVorticesSys.name = 'pointVortices';
 PointVorticesSys.longName = 'Point Vortex System';
 PointVorticesSys.stateVectorDerivative = @pointVorticesStateVectorDerivative;
@@ -13,6 +15,8 @@ PointVorticesSys.stateDerivative = @pointVorticesStateDerivative;
 PointVorticesSys.spatialDimension = 2;
 PointVorticesSys.isPeriodicInX = 0;
 PointVorticesSys.isPeriodicInY = 0;
+
+%% Set default run options %%
 
 % Set default parameter values
 PointVorticesSys.DefaultRunOptions.Parameters.gammas = [10, 10];
@@ -31,7 +35,10 @@ PointVorticesSys.DefaultRunOptions.InitialStateMetadata.yLimits = [-3.5, 3.5];
 PointVorticesSys.DefaultRunOptions.InitialStateMetadata.dx = 0.05;
 PointVorticesSys.DefaultRunOptions.InitialStateMetadata.dy = 0.05;
 
-% Set default plot options
+%% Set default analysis options %%
+
+%% Set default plot options %%
+
 PointVorticesSys.DefaultPlotOptions.xLimits = [-3.5, 3.5];
 PointVorticesSys.DefaultPlotOptions.yLimits = [-3.5, 3.5];
 PointVorticesSys.DefaultPlotOptions.xLabel = '$x$';

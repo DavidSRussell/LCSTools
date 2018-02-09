@@ -1,10 +1,12 @@
 function DoubleGyreSys = setUpDoubleGyre
 % setUpDoubleGyre: Set up an ODESystem object for the periodically-driven
-% double gyre, with fields set to various default values.
+% double gyre, with fields set to various default values. Default options
+% are split into run options, analysis options, and plot options.
 
 DoubleGyreSys = ODESystem;
 
-% Set essential features
+%% Set essential features %%
+
 DoubleGyreSys.name = 'doubleGyre';
 DoubleGyreSys.longName = 'Periodically Driven Double Gyre';
 DoubleGyreSys.stateVectorDerivative = @doubleGyreStateVectorDerivative;
@@ -12,6 +14,8 @@ DoubleGyreSys.stateDerivative = @doubleGyreStateDerivative;
 DoubleGyreSys.spatialDimension = 2;
 DoubleGyreSys.isPeriodicInX = 0;
 DoubleGyreSys.isPeriodicInY = 0;
+
+%% Set default run options %%
 
 % Set default system parameter values
 DoubleGyreSys.DefaultRunOptions.Parameters.A = 0.25;
@@ -30,7 +34,10 @@ DoubleGyreSys.DefaultRunOptions.InitialStateMetadata.yLimits = [0, 1];
 DoubleGyreSys.DefaultRunOptions.InitialStateMetadata.dx = 0.01;
 DoubleGyreSys.DefaultRunOptions.InitialStateMetadata.dy = 0.01;
 
-% Set default plot options
+%% Set default analysis options %%
+
+%% Set default plot options %%
+
 DoubleGyreSys.DefaultPlotOptions.xLimits = [0, 2];
 DoubleGyreSys.DefaultPlotOptions.yLimits = [0, 1];
 DoubleGyreSys.DefaultPlotOptions.xLabel = '$x$';
