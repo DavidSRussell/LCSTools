@@ -3,9 +3,9 @@ LCSTools README (updated 2/8/2018)
 By:
 David Russell
 (240) 997-1091
-davidscottrussell@gmail.com
+russelld@umd.edu
 
-======
+=====
 
 GETTING STARTED
 
@@ -17,16 +17,17 @@ INTRODUCTION
 
 In LCSTools, a Lagrangian analysis is split into three steps: 1) compute tracer trajectories through the flow, 2) apply some analysis of the resulting system states, and 3) plot the fields resulting from this analysis.
 
+
 1. To compute trajectories:
 
 a) Choose an ODE System or Dataset from the following options:
 
      2D ODE Systems:
-       'doubleGyre'      Periodically-forced double gyre
-       'duffing'         Periodically-forced Duffing oscillator
        'linearSystem2D'  General 2D linear system
-       'pointVortices'   Point Vortex system (each vortex advects according to other vortices)
-       'stratosphere'    Idealized stratospheric flow (from Bollt and Santitissadeekorn)
+       'duffing'         Periodically-forced Duffing oscillator
+       'doubleGyre'      Periodically-forced double gyre
+       'pointVortices'   Point vortex system (each vortex advects according to other vortices)
+       'stratosphere'    Idealized stratospheric flow (from Bollt and Santitissadeekorn text)
 
      3D ODE Systems:
        'hillVortex'      Hill's Spherical Vortex
@@ -35,31 +36,77 @@ a) Choose an ODE System or Dataset from the following options:
      Datasets:
        'chesROMS'        Chesapeake Bay ROMS
 
-Relevant information on these velocity field sources can be found in the directories models/ and datasets/.
+Detailed information on these velocity field sources can be found in the directories:
 
-b) Any desired changes to the default run options for the chosen system or dataset can be entered into the file /options/changeRunOptions.m. This includes options for the system parameters, the integration parameters, and the initial state. The default options will mostly be found in the aforementioned directories models/ and datasets/,  with a few additional settings in options/default/.
+LCSTools/models/
+LCSTools/datasets/
 
-c) Run the function computeTrajectories with the system or dataset name as the argument (for example, computeTrajectories(‘duffing’). The output from this function will be a .mat file containing all relevant information from the run, stored in directory /output/.
+b) Any desired changes to the default run options for the chosen system or dataset can be entered into the file:
+
+LCSTools/options/changeRunOptions.m
+
+This includes options for the system parameters, the integration parameters, and the initial state. The default options will mostly be found in the aforementioned directories models/ and datasets/, with a few additional settings in
+
+LCSTools/options/default/
+
+c) Run the function
+
+computeTrajectories(model/dataset_name)
+(e.g. computeTrajectories(‘duffing’) )
+
+The output from this function will be a time-stamped .mat file containing all relevant information from the run, stored in automatically-generated subdirectories of
+
+LCSTools/output/
+
+e.g.
+
+LCSTools/output/run/duffing/duffing_-20to20_run_20171006T172812.mat
+
 
 2. To analyze the states put out by computeTrajectories:
 
-a) Make any desired changes to the default analysis options by entering them in the file /options/changeAnalysisOptions.m. This includes a choice of which Lagrangian fields to obtain, as well as transition matrix parameters if the coherent set method is used. Default options are mostly set in /options/default/ but some may also be attached to the ODE system or dataset itself (in /models/ or /datasets/).
+a) Make any desired changes to the default analysis options by entering them in the file:
 
-b) Run the function analyzeStates with the output .mat file from computeTrajectories as input. For example, if computeTrajectories put out the following string:
+LCSTools/options/changeAnalysisOptions.m
 
-‘duffing_-20to20_run_20171006T172812.mat’,
+This includes a choice of which Lagrangian fields to obtain (M, FTLE, or coherent sets), as well as transition matrix parameters if the coherent set method is used. Default options are mostly set in:
 
-run the command:
+LCSTools/options/default/
 
-analyzeStates(‘duffing_-20to20_run_20171006T172812.mat’).
+but some may also be attached to the ODE system or dataset itself (in models/ or datasets/).
 
-The output will again be a .mat file containing all relevant information for plotting.
+b) Run the function
+
+analyzeStates(computeTrajectories_output_file_name)
+
+e.g.
+
+analyzeStates('duffing_-20to20_run_20171006T172812.mat')
+
+The output will again be a .mat file containing all relevant information for plotting, again stored within the output/ directory, e.g.
+
+LCSTools/output/analysis/duffing/duffing_-20to20_analysis_20171006T172840.mat
+
 
 3. To plot the Lagrangian fields:
 
-a) Change any default plot options in /options/changePlotOptions.m, including axis limits and labels, colormap, 3D plot types, 3D view angles, and many others. Default options can be found in directories /models/ or /datasets/ and /options/default.
+a) Change any default plot options in file:
 
-b) Run the function plotFields with the .mat file name put out by analyzeStates as argument. Plots will be produced and (optionally) saved to the /output/ directory.
+LCSTools/options/changePlotOptions.m
+
+including axis limits and labels, colormap, 3D plot types, 3D view angles, and many others. Default options can be found in directories models/ or datasets/ and options/default.
+
+b) Run the function:
+
+plotFields(analyzeStates_output_file_name)
+
+e.g.
+
+plotFields('duffing_-20to20_analysis_20171006T172840.mat')
+
+Plots will be produced and (optionally) saved to the output/ directory.
+
+=====
 
 A few additional visualization options exist outside this normal workflow. Like plotFields, these will also incorporate any options set in changePlotOptions.m:
 
