@@ -90,6 +90,8 @@ outputTimes = outputTimes(outputTimes >= tSpan(1));
 outputTimes = outputTimes(outputTimes <= tSpan(2));
 initialStateVector = convertStructureToVector(InitialState);
 stateVectors = NaN(length(outputTimes), length(initialStateVector));
+fprintf('Initial time: t = %.1f\n', t0)
+fprintf('Integration time span: t = %.1f to t = %.1f\n', tSpan(1), tSpan(2))
 
 %% Integrate
 
@@ -115,7 +117,8 @@ for direction = {'Forward', 'Backward'}
     end
     fprintf([direction, ' integration: t = %.1f to t = %.1f\n'], ...
       tVector(1), tVector(end))
-    fprintf('t = %.1f\n', t)
+    % fprintf('t = %.1f\n', t)
+    hWait = waitbar(0, ['Integrating ', direction, '...']);
     startWaitingClock = tic;
     startIntegration = tic;
     for i = 1 : length(tVector) - 1
@@ -221,10 +224,11 @@ for direction = {'Forward', 'Backward'}
       newStateVector = convertStructureToVector(NewState);
       stateVector = newStateVector;
       t = tVector(i + 1);
-      if toc(startWaitingClock) > 10
-        fprintf('t = %.1f\n', t)
+      %if toc(startWaitingClock) > 10
+        %fprintf('t = %.1f\n', t)
+        waitbar((t - tVector(1))/(tVector(end) - tVector(1)))
         startWaitingClock = tic;
-      end
+      %end
       outputTimeIndex = find(abs(t - outputTimes) < dt*1e-7);
       if ~isempty(outputTimeIndex)
         stateVectors(outputTimeIndex, :) = stateVector;
@@ -232,6 +236,7 @@ for direction = {'Forward', 'Backward'}
     end
     integrationTime = toc(startIntegration);
     fprintf([direction, ' integration complete (wall time: %.4f s)\n'], integrationTime)
+    close(hWait)
   end
 end
 
